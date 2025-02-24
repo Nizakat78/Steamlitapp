@@ -6,7 +6,7 @@ from io import  BytesIO
 
 st.set_page_config(page_title="💿 Data Sweeper", layout="wide")
 st.title("💿 Data Sweeper")
-st.write("Transfrom your files CSS and Excel formats with build-in data clean and visulization!")
+st.write("Transform your files CSS and Excel formats with build-in data clean and visualization!")
 
 uploaded_files = st.file_uploader("Upload you files(CSV or Excel):",  type =["csv","xlsx"],
                                   accept_multiple_files=True)
@@ -24,14 +24,14 @@ if uploaded_files:
 
 
     st.write(f"**File Name:** {file.name}")
-    st.write(f"**File Size: {file.size/1024}")
+    st.write(f"**File Size:** {file.size/1024}")
 
 
     st.write("Preview the Head of the Dataframe")
     st.dataframe(df.head())
 
 st.subheader("Data cleaning options")
-if st.checkbox(f"Clean Data for{file.name}"):
+if st.checkbox(f"Clean Data for: {file.name}"):
     col1, col2 =st.columns(2)
 
     with col1:
@@ -51,10 +51,10 @@ st.subheader("Select Columns to Converts")
 columns=st.multiselect(f"Choose Columns for{file.name}",df.columns, default=df.columns)
 df=df[columns]
 
-#create some Visualizations
+#create some visualization
 
-st.subheader("📊 Data Visualizations")
-if st.checkbox(f"Show of Visualizations :{file.name}"):
+st.subheader("📊 Data visualization")
+if st.checkbox(f"Show of visualization :{file.name}"):
     st.bar_chart(df.select_dtypes(include='number').iloc[:,:2])
 
     
