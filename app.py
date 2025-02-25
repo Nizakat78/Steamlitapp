@@ -62,6 +62,8 @@ if uploaded_files:
         st.subheader("📊 Data visualization")
         if st.checkbox(f"Show Visualization for: {file.name}"):
             st.bar_chart(df.select_dtypes(include='number').iloc[:, :2])
+            color = st.color_picker("Pick A Color", "#00f900")
+            st.write("The current color is", color)
 
         # Conversion options (CSV or Excel)
         st.subheader("♋ Conversion Options")
